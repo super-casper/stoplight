@@ -1,16 +1,7 @@
 openapi: 3.0.2
 info:
   title: OpenWeatherMap API
-  description: >-
-    Get the current weather, daily forecast for 16 days, and a
-    three-hour-interval forecast for 5 days for your city. Helpful stats,
-    graphics, and this day in history charts are available for your reference.
-    Interactive maps show precipitation, clouds, pressure, wind around your
-    location stations. Data is available in JSON, XML, or HTML format. **Note**:
-    This sample Swagger file covers the `current` endpoint only from the
-    OpenWeatherMap API. <br/><br/> **Note**: All parameters are optional, but
-    you must select at least one parameter. Calling the API by city ID (using
-    the `id` parameter) will provide the most precise location results.
+  description: 'Get the current weather, daily forecast for 16 days, and a three-hour-interval forecast for 5 days for your city. Helpful stats, graphics, and this day in history charts are available for your reference. Interactive maps show precipitation, clouds, pressure, wind around your location stations. Data is available in JSON, XML, or HTML format. **Note**: This sample Swagger file covers the `current` endpoint only from the OpenWeatherMap API. <br/><br/> **Note**: All parameters are optional, but you must select at least one parameter. Calling the API by city ID (using the `id` parameter) will provide the most precise location results.'
   version: '2.5'
   termsOfService: 'https://openweathermap.org/terms'
   contact:
@@ -30,55 +21,33 @@ paths:
       operationId: get-weather
       tags:
         - Current Weather Data
-      description: >-
-        Access current weather data for any location on Earth including over
-        200,000 cities! Current weather is frequently updated based on global
-        models and data from more than 40,000 weather stations.
+      description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
       parameters:
         - schema:
             type: string
           in: query
           name: q
-          description: >-
-            **City name**. *Example: London*. You can call by city name, or by
-            city name and country code. The API responds with a list of results
-            that match a searching word. For the query value, type the city name
-            and optionally the country code divided by a comma; use ISO 3166
-            country codes.
+          description: '**City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes.'
         - schema:
             type: string
           in: query
           name: id
-          description: >-
-            **City ID**. *Example: `2172797`*. You can call by city ID. The API
-            responds with the exact result. The List of city IDs can be
-            downloaded [here](http://bulk.openweathermap.org/sample/). You can
-            include multiple cities in this parameter — just separate them by
-            commas. The limit of locations is 20. *Note: A single ID counts as a
-            one API call. So, if you have city IDs, it’s treated as 3 API
-            calls.*
+          description: '**City ID**. *Example: `2172797`*. You can call by city ID. The API responds with the exact result. The List of city IDs can be downloaded [here](http://bulk.openweathermap.org/sample/). You can include multiple cities in this parameter — just separate them by commas. The limit of locations is 20. *Note: A single ID counts as a one API call. So, if you have city IDs, it’s treated as 3 API calls.*'
         - schema:
             type: string
           in: query
           name: lat
-          description: >-
-            **Latitude**. *Example: 35*. The latitude coordinate of the location
-            of your interest. Must use with `lon`.
+          description: '**Latitude**. *Example: 35*. The latitude coordinate of the location of your interest. Must use with `lon`.'
         - schema:
             type: string
           in: query
           name: lon
-          description: >-
-            **Longitude**. *Example: 139*. Longitude coordinate of the location
-            of your interest. Must use with `lat `.
+          description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat `.'
         - schema:
             type: string
           in: query
           name: zip
-          description: >-
-            **Zip code**. Search by zip code. *Example: 95050,us*. Please note
-            that if the country is not specified, the search uses USA as a
-            default.
+          description: '**Zip code**. Search by zip code. *Example: 95050,us*. Please note that if the country is not specified, the search uses USA as a default.'
         - schema:
             type: string
             default: standard
@@ -88,37 +57,19 @@ paths:
               - imperial
           in: query
           name: units
-          description: >-
-            **Units**. *Example: imperial*. Possible values: `standard`,
-            `metric`, and `imperial`. When you do not use the `units` parameter,
-            the format is `standard` by default.
+          description: '**Units**. *Example: imperial*. Possible values: `standard`, `metric`, and `imperial`. When you do not use the `units` parameter, the format is `standard` by default.'
         - schema:
             type: string
             default: en
           in: query
           name: lang
-          description: >-
-            **Language**. *Example: en*. You can use lang parameter to get the
-            output in your language. We support the following languages that you
-            can use with the corresponded lang values: Arabic - `ar`, Bulgarian
-            - `bg`, Catalan - `ca`, Czech - `cz`, German - `de`, Greek - `el`,
-            English - `en`, Persian (Farsi) - `fa`, Finnish - `fi`, French -
-            `fr`, Galician - `gl`, Croatian - `hr`, Hungarian - `hu`, Italian -
-            `it`, Japanese - `ja`, Korean - `kr`, Latvian - `la`, Lithuanian -
-            `lt`, Macedonian - `mk`, Dutch - `nl`, Polish - `pl`, Portuguese -
-            `pt`, Romanian - `ro`, Russian - `ru`, Swedish - `se`, Slovak -
-            `sk`, Slovenian - `sl`, Spanish - `es`, Turkish - `tr`, Ukrainian -
-            `ua`, Vietnamese - `vi`, Chinese Simplified - `zh_cn`, Chinese
-            Traditional - `zh_tw`.
+          description: '**Language**. *Example: en*. You can use lang parameter to get the output in your language. We support the following languages that you can use with the corresponded lang values: Arabic - `ar`, Bulgarian - `bg`, Catalan - `ca`, Czech - `cz`, German - `de`, Greek - `el`, English - `en`, Persian (Farsi) - `fa`, Finnish - `fi`, French - `fr`, Galician - `gl`, Croatian - `hr`, Hungarian - `hu`, Italian - `it`, Japanese - `ja`, Korean - `kr`, Latvian - `la`, Lithuanian - `lt`, Macedonian - `mk`, Dutch - `nl`, Polish - `pl`, Portuguese - `pt`, Romanian - `ro`, Russian - `ru`, Swedish - `se`, Slovak - `sk`, Slovenian - `sl`, Spanish - `es`, Turkish - `tr`, Ukrainian - `ua`, Vietnamese - `vi`, Chinese Simplified - `zh_cn`, Chinese Traditional - `zh_tw`.'
         - schema:
             type: string
             default: json
           in: query
           name: mode
-          description: >-
-            **Mode*. *Example: html. Determines the format of the response.
-            Possible values are `xml` and `html`. If the mode parameter is
-            empty, the format is `json` by default.
+          description: '**Mode*. *Example: html. Determines the format of the response. Possible values are `xml` and `html`. If the mode parameter is empty, the format is `json` by default.'
       responses:
         '200':
           description: OK
@@ -193,9 +144,7 @@ paths:
                     properties:
                       speed:
                         type: number
-                        description: >-
-                          Wind speed. Unit Default: meter/sec, Metric:
-                          meter/sec, Imperial: miles/hour.
+                        description: 'Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.'
                         example: 5.1
                       deg:
                         type: number
@@ -210,9 +159,7 @@ paths:
                     properties:
                       temp:
                         type: number
-                        description: >-
-                          Temperature. Unit Default: Kelvin, Metric: Celsius,
-                          Imperial: Fahrenheit.
+                        description: 'Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: 293.25
                       feels_like:
                         type: number
@@ -221,27 +168,15 @@ paths:
                         example: 41.16
                       temp_min:
                         type: number
-                        description: >-
-                          Minimum temperature at the moment. This is deviation
-                          from current temp that is possible for large cities
-                          and megalopolises geographically expanded (use these
-                          parameter optionally). Unit Default: Kelvin, Metric:
-                          Celsius, Imperial: Fahrenheit.
+                        description: 'Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: 289.82
                       temp_max:
                         type: number
-                        description: >-
-                          Maximum temperature at the moment. This is deviation
-                          from current temp that is possible for large cities
-                          and megalopolises geographically expanded (use these
-                          parameter optionally). Unit Default: Kelvin, Metric:
-                          Celsius, Imperial: Fahrenheit.
+                        description: 'Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: 295.37
                       pressure:
                         type: number
-                        description: >-
-                          Atmospheric pressure (on the sea level, if there is no
-                          sea_level or grnd_level data), hPa
+                        description: 'Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa'
                         example: 1019
                       humidity:
                         type: number
@@ -262,9 +197,7 @@ paths:
                           example: 803
                         main:
                           type: string
-                          description: >-
-                            Group of weather parameters (Rain, Snow, Extreme
-                            etc.)
+                          description: 'Group of weather parameters (Rain, Snow, Extreme etc.)'
                           example: clouds
                         description:
                           type: string
@@ -314,7 +247,7 @@ paths:
           description: Unauthorized response
           content:
             application/json:
-              schema: &ref_0
+              schema:
                 title: '401'
                 type: object
                 properties:
@@ -329,24 +262,17 @@ paths:
                 required:
                   - cod
                   - message
-      security:
-        - app_id: []
+      security: []
 servers:
   - url: 'https://api.openweathermap.org/data/2.5'
     description: prod
 components:
-  securitySchemes:
-    app_id:
-      name: appid
-      type: apiKey
-      in: query
+  securitySchemes: {}
   parameters:
     lon:
       name: lon
       in: query
-      description: >-
-        **Longitude**. *Example: 139*. Longitude coordinate of the location of
-        your interest. Must use with `lat`.
+      description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat`.'
       schema:
         type: string
   responses:
@@ -369,8 +295,20 @@ components:
             Unauthorized:
               value:
                 cod: 401
-                message: >-
-                  Invalid API key. Please see
-                  http://openweathermap.org/faq#error401 for more info.
+                message: 'Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.'
   schemas:
-    unauthorized_response: *ref_0
+    unauthorized_response:
+      title: '401'
+      type: object
+      properties:
+        cod:
+          type: integer
+          description: Status code
+          example: 401
+        message:
+          type: string
+          description: Explains why you received this message
+          example: Unauthorized due to invalid API key.
+      required:
+        - cod
+        - message
