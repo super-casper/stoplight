@@ -1,9 +1,8 @@
 openapi: 3.0.2
 info:
-  title: OpenWeatherMap API
-  description: 'Get the current weather, daily forecast for 16 days, and a three-hour-interval forecast for 5 days for your city. Helpful stats, graphics, and this day in history charts are available for your reference. Interactive maps show precipitation, clouds, pressure, wind around your location stations. Data is available in JSON, XML, or HTML format. **Note**: This sample Swagger file covers the `current` endpoint only from the OpenWeatherMap API. <br/><br/> **Note**: All parameters are optional, but you must select at least one parameter. Calling the API by city ID (using the `id` parameter) will provide the most precise location results.'
-  version: '2.5'
-  termsOfService: 'https://openweathermap.org/terms'
+  title: A YANG Data Model for System Management
+  description: 'This document defines a YANG [RFC6020] data model for the configuration and identification of some common properties within a device containing a Network Configuration Protocol (NETCONF) server. Devices that are managed by NETCONF and perhaps other mechanisms have common properties that need to be configured and monitored in a standard way.'
+  version: RFC 7317
   contact:
     name: OpenWeatherMap API
     url: 'https://openweathermap.org/api'
@@ -248,26 +247,18 @@ paths:
           content:
             application/json:
               schema:
-                title: '401'
-                type: object
-                properties:
-                  cod:
-                    type: integer
-                    description: Status code
-                    example: 401
-                  message:
-                    type: string
-                    description: Explains why you received this message
-                    example: Unauthorized due to invalid API key.
-                required:
-                  - cod
-                  - message
-      security: []
+                $ref: '#/components/schemas/unauthorized_response'
+      security:
+        - app_id: []
 servers:
-  - url: 'https://api.openweathermap.org/data/2.5'
+  - url: 'https://172.20.0.1/restconf/ietf-system:system'
     description: prod
 components:
-  securitySchemes: {}
+  securitySchemes:
+    app_id:
+      name: appid
+      type: apiKey
+      in: query
   parameters:
     lon:
       name: lon
