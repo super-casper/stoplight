@@ -36,17 +36,15 @@ paths:
           schema:
             type: object
             properties:
-              message:
+              Contact:
                 type: string
                 minLength: 0
                 maxLength: 255
-                example: This is new contact
-          examples:
-            application/json:
-              'ietf-system:system':
-                Contact: This is new contact
-      parameters: []
-    parameters: []
+                description: ''
+            examples:
+              application/json:
+                'ietf-system:system':
+                  contact: This new contact.  
   '/ietf-system:system/hostname':
     get:
       tags:
