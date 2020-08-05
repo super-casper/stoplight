@@ -72,7 +72,6 @@ paths:
             properties:
               location:
                 type: string
-                default: ''
           examples:
             application/json:
               'ietf-system:system':
