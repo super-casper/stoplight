@@ -40,15 +40,13 @@ paths:
                 type: string
                 minLength: 0
                 maxLength: 255
-                example: Switch
-                format: hostname
+                example: This is new contact
           examples:
             application/json:
               'ietf-system:system':
                 Contact: This is new contact
-      security:
-        - abc: []
       parameters: []
+    parameters: []
   '/ietf-system:system/hostname':
     get:
       tags:
@@ -158,12 +156,8 @@ paths:
                 dns-resolver:
                   options:
                     attmepts: '2'
-securityDefinitions:
-  abc:
-    type: basic
+securityDefinitions: {}
 produces:
   - application/json
 consumes:
   - application/json
-security:
-  - API Key - 1: []
