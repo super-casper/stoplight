@@ -1,30 +1,13 @@
 swagger: '2.0'
 info:
-  description: 
-    "This module contains a collection of YANG definitions for the
-     configuration and identification of some common system
-     properties within a device containing a NETCONF server.  This
-     includes data node definitions for system identification,
-     time-of-day management, user management, DNS resolver
-     configuration, and some protocol operations for system
-     management.
-     Copyright (c) 2014 IETF Trust and the persons identified as
-     authors of the code.  All rights reserved.
-     Redistribution and use in source and binary forms, with or
-     without modification, is permitted pursuant to, and subject
-     to the license terms contained in, the Simplified BSD License
-     set forth in Section 4.c of the IETF Trust's Legal Provisions
-     Relating to IETF Documents
-     (http://trustee.ietf.org/license-info).
-     This version of this YANG module is part of RFC 7317; see
-     the RFC itself for full legal notices."
+  description: "This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server.  This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code.  All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."
   version: 0.0.1
-  title: 'System YANG Model'
+  title: ietf-system
   contact:
     name: API Support
     email: apiteam@swagger.io
-    url: https://github.com/Redocly/redoc
-host: '172.20.0.1'
+    url: 'https://github.com/Redocly/redoc'
+host: 172.20.0.1
 basePath: /restconf/data
 tags:
   - name: system
@@ -40,13 +23,8 @@ paths:
     get:
       tags:
         - system
-      summary: Contact 
-      description: 'The administrator contact information for the system.
-                    A server implementation MAY map this leaf to the sysContact
-                    MIB object.  Such an implementation needs to use some
-                    mechanism to handle the differences in size and characters
-                    allowed between this leaf and sysContact.  The definition of
-                    such a mechanism is outside the scope of this document.'
+      summary: Contact
+      description: The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact.  The definition of such a mechanism is outside the scope of this document.
       operationId: getContact
       consumes:
         - application/yang.data+json
@@ -60,77 +38,67 @@ paths:
               - message
             properties:
               message:
-                type: 'string'
+                type: string
                 default: ''
           examples:
-            'application/json':
-              ietf-system:system:
-                Contact: 'This is new contact' 
+            application/json:
+              'ietf-system:system':
+                Contact: This is new contact
   '/ietf-system:system/hostname':
-   get:
-    tags:
-     - system
-    summary: Hostname 
-    description: 'The name of the host.  This name can be a single domain
-                  label or the fully qualified domain name of the host.'
-    operationId: getHostname
-    consumes:
-      - application/yang.data+json
-    produces:
-      - application/yang.data+json
-    responses:
-      '200':
-        description: successful operation
-        schema:
-          required:
-            - message
-          properties:
-            message:
-              type: 'null'
-              format: inet:domain-name
-              default: ''
-        examples:
-          'application/json':
-            ietf-system:system:
-              hostname: 'Switch' 
+    get:
+      tags:
+        - system
+      summary: Hostname
+      description: The name of the host.  This name can be a single domain label or the fully qualified domain name of the host.
+      operationId: getHostname
+      consumes:
+        - application/yang.data+json
+      produces:
+        - application/yang.data+json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            properties:
+              message:
+                type: 'null'
+                format: 'inet:domain-name'
+                default: ''
+          examples:
+            application/json:
+              'ietf-system:system':
+                hostname: Switch
   '/ietf-system:system/location':
-   get:
-    tags:
-     - system
-    summary: Location
-    description: 'The system location.
-                  A server implementation MAY map this leaf to the sysLocation
-                  MIB object.  Such an implementation needs to use some
-                  mechanism to handle the differences in size and characters
-                  allowed between this leaf and sysLocation.  The definition
-                  of such a mechanism is outside the scope of this document.'
-    operationId: getLocation
-    consumes:
-      - application/yang.data+json
-    produces:
-      - application/yang.data+json
-    responses:
-      '200':
-        description: successful operation
-        schema:
-          required:
-            - message
-          properties:
-            message:
-              type: 'string'
-              default: ''
-        examples:
-          'application/json':
-            ietf-system:system:
-              location: 'New Location'               
+    get:
+      tags:
+        - system
+      summary: Location
+      description: The system location. A server implementation MAY map this leaf to the sysLocation MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysLocation.  The definition of such a mechanism is outside the scope of this document.
+      operationId: getLocation
+      consumes:
+        - application/yang.data+json
+      produces:
+        - application/yang.data+json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            required:
+              - message
+            properties:
+              message:
+                type: string
+                default: ''
+          examples:
+            application/json:
+              'ietf-system:system':
+                location: New Location
   '/ietf-system:system/dns-resolver/options/timeout':
     get:
       tags:
         - DNS-resolver
-      summary: timeout 
-      description: 'The amount of time the resolver will wait for a
-                    response from each remote name server before
-                    retrying the query via a different name server.'
+      summary: timeout
+      description: The amount of time the resolver will wait for a response from each remote name server before retrying the query via a different name server.
       operationId: getDnsTimeout
       consumes:
         - application/yang.data+json
@@ -144,26 +112,23 @@ paths:
               - message
             properties:
               message:
-                type: 'integer'
-                format: 'uint8'
+                type: integer
+                format: uint8
                 minimum: 0
                 maximum: 255
                 default: '5'
           examples:
-            'application/json':
-              ietf-system:system:
+            application/json:
+              'ietf-system:system':
                 dns-resolver:
                   options:
-                    timeout: "3"
-                    
+                    timeout: '3'
   '/ietf-system:system/dns-resolver/options/attempts':
     get:
       tags:
         - DNS-resolver
       summary: attempts
-      description: 'The number of times the resolver will send a query to
-                    all of its name servers before giving up and returning
-                    an error to the calling application.'
+      description: The number of times the resolver will send a query to all of its name servers before giving up and returning an error to the calling application.
       operationId: getDnsAttempts
       consumes:
         - application/yang.data+json
@@ -177,14 +142,20 @@ paths:
               - message
             properties:
               message:
-                type: 'integer'
-                format: 'uint8'
+                type: integer
+                format: uint8
                 minimum: 0
-                maximum: 255                
+                maximum: 255
                 default: '2'
           examples:
-            'application/json':
-              ietf-system:system:
+            application/json:
+              'ietf-system:system':
                 dns-resolver:
                   options:
-                    attmepts: "2"
+                    attmepts: '2'
+securityDefinitions:
+  security1:
+    type: basic
+    description: ''
+security:
+  - API Key - 1: []
