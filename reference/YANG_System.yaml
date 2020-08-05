@@ -38,6 +38,8 @@ paths:
             application/json:
               'ietf-system:system':
                 contact: This new contact.
+      security:
+        - myTestAuth: []
   '/ietf-system:system/hostname':
     get:
       tags:
@@ -124,8 +126,12 @@ paths:
                 dns-resolver:
                   options:
                     attmepts: '2'
-securityDefinitions: {}
+securityDefinitions:
+  myTestAuth:
+    type: basic
 produces:
   - application/json
 consumes:
   - application/json
+security:
+  - myTestAuth: []
