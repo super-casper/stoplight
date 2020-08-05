@@ -45,16 +45,12 @@ paths:
       summary: Hostname
       description: The name of the host.  This name can be a single domain label or the fully qualified domain name of the host.
       operationId: getHostname
-      consumes:
-        - application/yang.data+json
-      produces:
-        - application/yang.data+json
       responses:
         '200':
           description: successful operation
           schema:
             properties:
-              message:
+              hostname:
                 type: 'null'
                 format: 'inet:domain-name'
                 default: ''
@@ -69,18 +65,12 @@ paths:
       summary: Location
       description: The system location. A server implementation MAY map this leaf to the sysLocation MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysLocation.  The definition of such a mechanism is outside the scope of this document.
       operationId: getLocation
-      consumes:
-        - application/yang.data+json
-      produces:
-        - application/yang.data+json
       responses:
         '200':
           description: successful operation
           schema:
-            required:
-              - message
             properties:
-              message:
+              location:
                 type: string
                 default: ''
           examples:
@@ -94,16 +84,10 @@ paths:
       summary: timeout
       description: The amount of time the resolver will wait for a response from each remote name server before retrying the query via a different name server.
       operationId: getDnsTimeout
-      consumes:
-        - application/yang.data+json
-      produces:
-        - application/yang.data+json
       responses:
         '200':
           description: successful operation
           schema:
-            required:
-              - message
             properties:
               message:
                 type: integer
@@ -124,18 +108,12 @@ paths:
       summary: attempts
       description: The number of times the resolver will send a query to all of its name servers before giving up and returning an error to the calling application.
       operationId: getDnsAttempts
-      consumes:
-        - application/yang.data+json
-      produces:
-        - application/yang.data+json
       responses:
         '200':
           description: successful operation
           schema:
-            required:
-              - message
             properties:
-              message:
+              attmepts:
                 type: integer
                 format: uint8
                 minimum: 0
