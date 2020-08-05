@@ -34,16 +34,21 @@ paths:
         '200':
           description: successful operation
           schema:
-            required:
-              - message
+            type: object
             properties:
               message:
                 type: string
-                default: ''
+                minLength: 0
+                maxLength: 255
+                example: Switch
+                format: hostname
           examples:
             application/json:
               'ietf-system:system':
                 Contact: This is new contact
+      security:
+        - abc: []
+      parameters: []
   '/ietf-system:system/hostname':
     get:
       tags:
@@ -154,8 +159,11 @@ paths:
                   options:
                     attmepts: '2'
 securityDefinitions:
-  security1:
+  abc:
     type: basic
-    description: ''
+produces:
+  - application/json
+consumes:
+  - application/json
 security:
   - API Key - 1: []
