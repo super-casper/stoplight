@@ -38,13 +38,10 @@ paths:
             properties:
               Contact:
                 type: string
-                minLength: 0
-                maxLength: 255
-                description: ''
-            examples:
-              application/json:
-                'ietf-system:system':
-                  contact: This new contact.  
+          examples:
+            application/json:
+              'ietf-system:system':
+                contact: This new contact.
   '/ietf-system:system/hostname':
     get:
       tags:
