@@ -38,6 +38,14 @@ paths:
             application/json:
               'ietf-system:system':
                 contact: This new contact.
+          headers: {}
+        '401':
+          description: Unauthorized
+          schema:
+            type: object
+            properties: {}
+          examples:
+            example-1: {}
       security:
         - myTestAuth: []
   '/ietf-system:system/hostname':
