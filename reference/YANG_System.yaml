@@ -39,13 +39,21 @@ paths:
               'ietf-system:system':
                 contact: This new contact.
           headers: {}
-        '401':
-          description: Unauthorized
+        '400':
+          description: Bad Request
           schema:
             type: object
-            properties: {}
+            properties:
+              errors:
+                type: array
+                items: {}
           examples:
-            example-1: {}
+            application/json:
+              'ietf-restconf:errors':
+                error:
+                  error-type: application
+                  error-tag: invalid-value
+                  error-message: Restconf Message is not valid
       security: []
       parameters: []
   '/ietf-system:system/hostname':
