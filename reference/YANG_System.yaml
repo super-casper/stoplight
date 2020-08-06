@@ -46,8 +46,8 @@ paths:
             properties: {}
           examples:
             example-1: {}
-      security:
-        - myTestAuth: []
+      security: []
+      parameters: []
   '/ietf-system:system/hostname':
     get:
       tags:
@@ -134,12 +134,8 @@ paths:
                 dns-resolver:
                   options:
                     attmepts: '2'
-securityDefinitions:
-  myTestAuth:
-    type: basic
+securityDefinitions: {}
 produces:
   - application/json
 consumes:
   - application/json
-security:
-  - myTestAuth: []
