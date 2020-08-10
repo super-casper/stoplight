@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   description: "This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server.  This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code.  All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."
   version: 0.0.1
-  title: ietf-system
+  title: ietf-system@2014-08-06
   contact:
     name: API Support
     email: apiteam@swagger.io
@@ -35,7 +35,7 @@ paths:
               Contact:
                 type: string
           examples:
-            application/json:
+            Example:
               'ietf-system:system':
                 contact: This new contact.
           headers: {}
@@ -69,11 +69,10 @@ paths:
           schema:
             properties:
               hostname:
-                type: 'null'
+                type: string
                 format: 'inet:domain-name'
-                default: ''
           examples:
-            application/json:
+            Example:
               'ietf-system:system':
                 hostname: Switch
   '/ietf-system:system/location':
@@ -103,10 +102,11 @@ paths:
       operationId: getDnsTimeout
       responses:
         '200':
-          description: successful operation
+          description: OK
           schema:
+            type: object
             properties:
-              message:
+              timeout:
                 type: integer
                 format: uint8
                 minimum: 0
@@ -142,6 +142,201 @@ paths:
                 dns-resolver:
                   options:
                     attmepts: '2'
+  '/ietf-system:system/dns-resolver/options':
+    get:
+      tags:
+        - DNS-resolver
+      summary: Get DNS options
+      description: Resolver options. The set of available options has been limited to those that are generally available across different resolver implementations and generally useful.
+      operationId: getDnsOptions
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              options:
+                type: object
+                properties:
+                  timeout:
+                    type: integer
+                    format: uint8
+                    default: 5
+                    example: 3
+                    minimum: 0
+                    maximum: 255
+                  attempts:
+                    type: integer
+                    format: uint8
+                    default: 2
+                    example: 2
+                    minimum: 0
+                    maximum: 255
+          examples:
+            application/json:
+              'ietf-system:system':
+                dns-resolver:
+                  options:
+                    timeout: '3'
+                    attempts: '2'
+    put:
+      tags:
+        - DNS-resolver
+      summary: Put DNS options
+      description: Update DNS options
+      operationId: putDnsOptions
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties: {}
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+          description: ''
+    parameters: []
+  '/ietf-system:system/dns-resolver/server={serverpath}/name':
+    get:
+      tags:
+        - DNS-resolver
+      summary: Find server name
+      description: return server name
+      operationId: getServerName
+      parameters:
+        - name: serverpath
+          in: path
+          description: server name to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+          examples:
+            application/json:
+              'ietf-system:system':
+                dns-resolver:
+                  server:
+                    name: 10.243.16.11
+    parameters: []
+  '/ietf-system:system/dns-resolver/server={serverpath}/udp-and-tcp':
+    get:
+      tags:
+        - DNS-resolver
+      summary: Find server udp-and-tcp info
+      description: return server udp-and-tcp
+      operationId: getServerUdpTcpAddress
+      parameters:
+        - name: serverpath
+          in: path
+          description: server name to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              udp-and-tcp:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    format: inet:ip-address
+                  port:
+                    type: integer
+                    format: inet:port-number
+                    default: 53
+                    x-deprecated: true
+          examples:
+            application/json:
+              'ietf-system:system':
+                dns-resolver:
+                  server:
+                    name: 10.243.16.11
+                    udp-and-tcp:
+                      address: 10.243.16.11
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  error-type:
+                    type: string
+                  error-tag:
+                    type: string
+                  error-message:
+                    type: string
+          examples:
+            application/json:
+              'ietf-restconf:errors':
+                error:
+                  error-type: application
+                  error-tag: invalid-value
+                  error-message: Restconf Message is not valid
+  '/ietf-system:system/dns-resolver/server={serverpath}/udp-and-tcp/address':
+     get:
+      tags:
+        - DNS-resolver
+      summary: Find server udp-and-tcp address
+      description: return server udp-and-tcp
+      operationId: getServerUdpTcp
+      parameters:
+        - name: serverpath
+          in: path
+          description: server name to return
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              udp-and-tcp:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    format: inet:ip-address
+                  port:
+                    type: integer
+                    format: inet:port-number
+                    default: 53
+                    x-deprecated: true
+          examples:
+            application/json:
+              'ietf-system:system':
+                dns-resolver:
+                  server:
+                    name: 10.243.16.11
+                    udp-and-tcp:
+                      address: 10.243.16.11
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  error-type:
+                    type: string
+                  error-tag:
+                    type: string
+                  error-message:
+                    type: string
 securityDefinitions: {}
 produces:
   - application/json

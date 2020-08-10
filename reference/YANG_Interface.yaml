@@ -1,0 +1,1165 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: ietf-interfaces
+  description: any operations on interfaces
+schemes:
+  - https
+host: 172.20.0.83
+basePath: /restconf/data
+tags:
+  - name: ietf-interfaces
+    description: Everything about ietf-interface
+  - name: ietf-interfaces-state
+    description: Everything about ietf-interface-state
+paths:
+  '/ietf-interfaces:interfaces':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get information about all interfaces
+      description: ''
+      operationId: getInterfaces
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get information about single interface
+      description: ''
+      operationId: getInterface
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      type:
+                        $ref: '#/definitions/type'
+                      enable:
+                        $ref: '#/definitions/enabledt'
+                      link-up-down-trap-enable:
+                        $ref: '#/definitions/link-up-down-trap-enable'
+                      ietf-ip-ipv4:
+                        $ref: '#/definitions/ietf-ip-ipv4'
+                      ietf-ip-ipv6:
+                        $ref: '#/definitions/ietf-ip-ipv6'
+    put:
+      tags:
+        - ietf-interfaces
+      summary: update interface
+      description: ''
+      operationId: putInterface
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              interface:
+                $ref: '#/definitions/interface_put'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}/name':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get interface name
+      description: ''
+      operationId: getInterfaceName
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}/description':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get interface description
+      description: ''
+      operationId: getInterfaceDescription
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      description:
+                        type: string
+                        example: This is interface 0/1
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}/type':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get interface type
+      description: ''
+      operationId: getInterfaceType
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      type:
+                        $ref: '#/definitions/type'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}/enabled':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get interface enabled
+      description: ''
+      operationId: getInterfaceEnabled
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      enabled:
+                        $ref: '#/definitions/enabledt'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces/{interface}/link-up-down-trap-enable':
+    get:
+      tags:
+        - ietf-interfaces
+      summary: get interface link-up-down-trap-enable
+      description: ''
+      operationId: getInterfaceLink
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      link-up-down-trap-enable:
+                        $ref: '#/definitions/link-up-down-trap-enable'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get state about all interfaces
+      description: ''
+      operationId: getInterfaceState
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get state about single interface
+      description: ''
+      operationId: getInterfacesStateInterface
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      type:
+                        $ref: '#/definitions/type'
+                      admin-status:
+                        $ref: '#/definitions/admin-status'
+                      oper-status:
+                        $ref: '#/definitions/oper-status'
+                      if-index:
+                        $ref: '#/definitions/if-index'
+                      last-change:
+                        $ref: '#/definitions/last-change'
+                      phys-address:
+                        $ref: '#/definitions/phys-address'
+                      speed:
+                        $ref: '#/definitions/speed'
+                      statistics:
+                        $ref: '#/definitions/statistics'
+                      'ietf-ip:ipv4':
+                        $ref: '#/definitions/ietf-ip%3Aipv4_s'
+                      'ietf-ip:ipv6':
+                        $ref: '#/definitions/ietf-ip%3Aipv4_s'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/name':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface name
+      description: ''
+      operationId: getInterfacesStateName
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/type':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface type
+      description: ''
+      operationId: getInterfacesStateType
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      type:
+                        $ref: '#/definitions/type'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/admin-status':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface admin status
+      description: ''
+      operationId: getInterfacesStateAdminStatus
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      admin-status:
+                        $ref: '#/definitions/admin-status'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/oper-status':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface oper status
+      description: ''
+      operationId: getInterfacesStateOperStatus
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      oper-status:
+                        $ref: '#/definitions/oper-status'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/last-change':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface last change time
+      description: ''
+      operationId: getInterfacesStateLastChange
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      last-change:
+                        $ref: '#/definitions/last-change'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/if-index':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface if-index
+      description: ''
+      operationId: getInterfacesStateIfIndex
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      if-index:
+                        $ref: '#/definitions/if-index'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/phys-address':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface physical address
+      description: ''
+      operationId: getInterfacesStatePhysAddress
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      phys-address:
+                        $ref: '#/definitions/phys-address'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/speed':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface speed
+      description: ''
+      operationId: getInterfacesStateSpeed
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      speed:
+                        $ref: '#/definitions/speed'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interface statistics
+      description: ''
+      operationId: getInterfacesStateStatistics
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        $ref: '#/definitions/statistics'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/discontinuity-time':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces discontinuity time
+      description: ''
+      operationId: getInterfacesStateDiscontinuityTime
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          discontinuity:
+                            $ref: '#/definitions/discontinuity'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-octets':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-octets
+      description: ''
+      operationId: getInterfacesStateInOctets
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-octets:
+                            $ref: '#/definitions/in-octets'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-unicast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-unicast-pkts
+      description: ''
+      operationId: getInterfacesStateInUnicastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-unicast-pkts:
+                            $ref: '#/definitions/in-unicast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-broadcast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-broadcast-pkts
+      description: ''
+      operationId: getInterfacesStateInBroadcastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-broadcast-pkts:
+                            $ref: '#/definitions/in-broadcast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-multicast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-multicast-pkts
+      description: ''
+      operationId: getInterfacesStateInMulticastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-multicast-pkts:
+                            $ref: '#/definitions/in-multicast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-discards':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-discards
+      description: ''
+      operationId: getInterfacesStateInDiscard
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-discards:
+                            $ref: '#/definitions/in-discards'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/in-errors':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces in-errors
+      description: ''
+      operationId: getInterfacesStateInErrors
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          in-errors:
+                            $ref: '#/definitions/in-errors'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-octets':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-octets
+      description: ''
+      operationId: getInterfacesStateOutOctets
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-octets:
+                            $ref: '#/definitions/out-octets'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-unicast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-unicast-pkts
+      description: ''
+      operationId: getInterfacesStateOutUnicastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-unicast-pkts:
+                            $ref: '#/definitions/out-unicast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-broadcast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-broadcast-pkts
+      description: ''
+      operationId: getInterfacesStateOutBroadcastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-broadcast-pkts:
+                            $ref: '#/definitions/out-broadcast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-multicast-pkts':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-multicast-pkts
+      description: ''
+      operationId: getInterfacesStateOutMulticastPkts
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-multicast-pkts:
+                            $ref: '#/definitions/out-multicast-pkts'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-discards':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-discards
+      description: ''
+      operationId: getInterfacesStateOutDiscards
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-discards:
+                            $ref: '#/definitions/out-discards'
+        '400':
+          description: Bad Request
+  '/ietf-interfaces:interfaces-state/{interface}/statistics/out-errors':
+    get:
+      tags:
+        - ietf-interfaces-state
+      summary: get interfaces out-errors
+      description: ''
+      operationId: getInterfacesStateOutErrors
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/interface'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              'ietf-interfaces:interfaces-state':
+                type: object
+                properties:
+                  interface:
+                    type: object
+                    properties:
+                      name:
+                        $ref: '#/definitions/name'
+                      statistics:
+                        type: object
+                        properties:
+                          out-errors:
+                            $ref: '#/definitions/out-errors'
+        '400':
+          description: Bad Request
+parameters:
+  interface:
+    name: interface
+    in: path
+    description: 'interface you want to get(ex: interface=0/1)'
+    required: true
+    type: string
+definitions:
+  name:
+    type: string
+    example: 0/1
+  type:
+    type: string
+    example: 'ianaift:ethernetCsmacd'
+  enabledt:
+    type: boolean
+    examples: true
+  enabledf:
+    type: boolean
+    example: false
+  link-up-down-trap-enable:
+    type: string
+    example: enabled
+  ietf-ip-ipv4:
+    type: object
+    properties:
+      enabled:
+        $ref: '#/definitions/enabledf'
+      forwarding:
+        $ref: '#/definitions/forwarding'
+  ietf-ip-ipv6:
+    type: object
+    properties:
+      enabled:
+        $ref: '#/definitions/enabledf'
+      forwarding:
+        $ref: '#/definitions/forwarding'
+      dup-addr-detect-transmits:
+        type: integer
+        example: 1
+      autoconf:
+        $ref: '#/definitions/autoconf'
+  forwarding:
+    type: boolean
+    example: false
+  forwardingt:
+    type: boolean
+    example: true
+  autoconf:
+    type: object
+    properties:
+      creat-global-addresses:
+        type: boolean
+        example: false
+  interface_put:
+    type: object
+    properties:
+      name:
+        $ref: '#/definitions/name'
+      descrition:
+        type: string
+        example: Test
+      type:
+        $ref: '#/definitions/type'
+      enabled:
+        $ref: '#/definitions/enabledt'
+      link-up-down-trap-enable:
+        $ref: '#/definitions/link-up-down-trap-enable'
+      ipv4:
+        type: object
+        properties:
+          enabled:
+            $ref: '#/definitions/enabledt'
+          forwarding:
+            $ref: '#/definitions/forwardingt'
+          mtu:
+            type: integer
+            example: 1280
+      ipv6:
+        type: object
+        properties:
+          enabled:
+            $ref: '#/definitions/enabledt'
+          forwarding:
+            $ref: '#/definitions/forwardingt'
+          mtu:
+            type: integer
+            example: 1290
+          dup-addr-detect-transmits:
+            type: integer
+            example: 1
+          autoconf:
+            $ref: '#/definitions/autoconf'
+  admin-status:
+    type: string
+    example: down
+  oper-status:
+    type: string
+    example: down
+  if-index:
+    type: integer
+    example: 1
+  last-change:
+    type: string
+    example: '1965-05-27T05:00:28Z'
+  phys-address:
+    type: string
+    example: 'D8:C4:97:56:86:2F'
+  speed:
+    type: integer
+    example: 4294967295
+  discontinuity:
+    type: string
+    example: '1965-05-27T05:00:28z'
+  in-octets:
+    type: integer
+    example: 0
+  in-unicast-pkts:
+    type: integer
+    example: 0
+  in-broadcast-pkts:
+    type: integer
+    example: 0
+  in-multicast-pkts:
+    type: integer
+    example: 0
+  in-discards:
+    type: integer
+    example: 0
+  in-errors:
+    type: integer
+    example: 0
+  in-unknown-protos:
+    type: integer
+    example: 0
+  out-octets:
+    type: integer
+    example: 0
+  out-unicast-pkts:
+    type: integer
+    example: 0
+  out-broadcast-pkts:
+    type: integer
+    example: 0
+  out-multicast-pkts:
+    type: integer
+    example: 0
+  out-discards:
+    type: integer
+    example: 0
+  out-errors:
+    type: integer
+    example: 0
+  out-unknown-protos:
+    type: integer
+    example: 0
+  'ietf-ip:ipv4_s':
+    type: object
+    properties:
+      forwarding:
+        $ref: '#/definitions/forwarding'
+      mtu:
+        type: integer
+        example: 1500
+  statistics:
+    type: object
+    properties:
+      discontinuity:
+        $ref: '#/definitions/discontinuity'
+      in-octets:
+        $ref: '#/definitions/in-octets'
+      in-unicast-pkts:
+        $ref: '#/definitions/in-unicast-pkts'
+      in-broadcast-pkts:
+        $ref: '#/definitions/in-broadcast-pkts'
+      in-multicast-pkts:
+        $ref: '#/definitions/in-multicast-pkts'
+      in-discards:
+        $ref: '#/definitions/in-discards'
+      in-errors:
+        $ref: '#/definitions/in-errors'
+      in-unknown-protos:
+        $ref: '#/definitions/in-unknown-protos'
+      out-octets:
+        $ref: '#/definitions/out-octets'
+      out-unicast-pkts:
+        $ref: '#/definitions/out-unicast-pkts'
+      out-broadcast-pkts:
+        $ref: '#/definitions/out-broadcast-pkts'
+      out-multicast-pkts:
+        $ref: '#/definitions/out-multicast-pkts'
+      out-discards:
+        $ref: '#/definitions/out-discards'
+      out-errors:
+        $ref: '#/definitions/out-errors'
+      out-unknown-protos:
+        $ref: '#/definitions/out-unknown-protos'
