@@ -27,8 +27,8 @@ paths:
     get:
       tags:
         - system
-      summary: '/ietf-system:system/contact (leaf)'
-      description: The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact.  The definition of such a mechanism is outside the scope of this document.
+      summary: '/ietf-system:system/contact'
+      description: The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact.  The definition of such a mechanism is outside the scope of this document. **The YANG model type is `leaf`**
       operationId: getContact
       responses:
         '200':
@@ -64,7 +64,7 @@ paths:
       tags:
         - system
       summary: '/ietf-system:system/hostname'
-      description: The name of the host.  This name can be a single domain label or the fully qualified domain name of the host.
+      description: The name of the host.  This name can be a single domain label or the fully qualified domain name of the host. **The YANG model type is `leaf`** ![Image](http://www.pngplay.com/?p=34790)
       operationId: getHostname
       responses:
         '200':
@@ -100,7 +100,7 @@ paths:
     get:
       tags:
         - system
-      summary: '/ietf-system:system/location'
+      summary: '/ietf-system:system/location (leaf)'
       description: The system location. A server implementation MAY map this leaf to the sysLocation MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysLocation.  The definition of such a mechanism is outside the scope of this document.
       operationId: getLocation
       responses:
@@ -134,8 +134,8 @@ paths:
     get:
       tags:
         - DNS-resolver
-      summary: '/ietf-system:system/dns-resolver/options/timeout'
-      description: The amount of time the resolver will wait for a response from each remote name server before retrying the query via a different name server.
+      summary: '/ietf-system:system/dns-resolver/options/timeout (leaf)'
+      description: The amount of time the resolver will wait for a response from each remote name server before retrying the query via a different name server. `leaf`
       operationId: getDnsTimeout
       responses:
         '200':
