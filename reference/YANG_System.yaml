@@ -27,7 +27,7 @@ paths:
     get:
       tags:
         - system
-      summary: 'leaf'
+      summary: '/ietf-system:system/contact (leaf)'
       description: The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object.  Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact.  The definition of such a mechanism is outside the scope of this document.
       operationId: getContact
       responses:
